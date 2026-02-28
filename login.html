@@ -47,9 +47,9 @@
       auth.signInWithEmailAndPassword(
         email.value,
         password.value
-      ).then(() => {
-        msg.innerText = "Login successful ✅";
-      }).catch(err => msg.innerText = err.message);
+     .then(() => {
+  window.location.href = "dashboard.html";
+}).catch(err => msg.innerText = err.message);
     }
   </script>
 
