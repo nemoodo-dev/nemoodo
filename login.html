@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login | neMOODo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+</head>
+<body style="font-family:sans-serif; text-align:center; padding-top:40px;">
+
+  <h2>neMOODo Login</h2>
+
+  <input id="email" placeholder="Email"><br><br>
+  <input id="password" type="password" placeholder="Password"><br><br>
+
+  <button onclick="signup()">Sign Up</button>
+  <button onclick="login()">Login</button>
+
+  <p id="msg"></p>
+
+  <script>
+    const firebaseConfig = {
+  apiKey: "AIzaSyBUEWDrbWulBH0BSIwuRI3Y5-yxptBdnsQ",
+  authDomain: "nemoodo-dev.firebaseapp.com",
+  projectId: "nemoodo-dev",
+  storageBucket: "nemoodo-dev.firebasestorage.app",
+  messagingSenderId: "902594050168",
+  appId: "1:902594050168:web:0521189f772d1736a3958d"
+};
+
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function signup() {
+      auth.createUserWithEmailAndPassword(
+        email.value,
+        password.value
+      ).then(() => {
+        msg.innerText = "Signup successful 🎉";
+      }).catch(err => msg.innerText = err.message);
+    }
+
+    function login() {
+      auth.signInWithEmailAndPassword(
+        email.value,
+        password.value
+      ).then(() => {
+        msg.innerText = "Login successful ✅";
+      }).catch(err => msg.innerText = err.message);
+    }
+  </script>
+
+</body>
+</html>
